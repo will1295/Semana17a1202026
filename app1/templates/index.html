@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table,th,td{
+            border: solid black 1px,
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'producto_create'%}">Crear nuevo producto</a>
+    <h1>Lista de productos disponibles</h1>
+    <!--<ul>
+        {%for producto in productos%}
+        <li>
+            {{producto.nombre}}
+        </li>
+        {%endfor%}
+    </ul>-->
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Stock</th>
+                <th>Stock Minimo</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for producto in productos%}
+            <tr>
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.stock}}</td>
+                <td>{{producto.stock_min}}</td>
+                <td>${{producto.precio}}</td>
+                <td>
+                    <a href="{% url 'producto_update' producto.id%}">Editar</a>
+                    <a href="{% url 'producto_delete' producto.id%}">Eliminar</a>
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+
+    </table>
+
+</body>
+</html>
